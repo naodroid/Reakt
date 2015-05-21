@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/Users/nao/learning/reakt/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/jars/libs/internal_impl-21.0.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
+        <dex dex="/Users/nao/learning/reakt/app/build/intermediates/pre-dexed/debug/internal_impl-21.0.3-71b28a0a7e96b7b859425daac4ec71ff93be0ce1.jar" />
+    </item>
+    <item
+        jar="/Users/nao/learning/reakt/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/jars/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
+        <dex dex="/Users/nao/learning/reakt/app/build/intermediates/pre-dexed/debug/classes-f6550513787142c253d8033da1ec7ed6565f0432.jar" />
+    </item>
+    <item
+        jar="/Users/nao/learning/reakt/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/jars/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
+        <dex dex="/Users/nao/learning/reakt/app/build/intermediates/pre-dexed/debug/classes-066420b53817430d150f8c61e93197959dd7b376.jar" />
+    </item>
+    <item
+        jar="/Users/nao/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-runtime/0.11.91.4/16b50241d6d04386148f42d4c4d1e8034d8a2c35/kotlin-runtime-0.11.91.4.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="16b50241d6d04386148f42d4c4d1e8034d8a2c35">
+        <dex dex="/Users/nao/learning/reakt/app/build/intermediates/pre-dexed/debug/kotlin-runtime-0.11.91.4-5467bcfd7f3ad42a676f0ccf4756630739957249.jar" />
+    </item>
+    <item
+        jar="/Users/nao/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/21.0.3/support-annotations-21.0.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
+        <dex dex="/Users/nao/learning/reakt/app/build/intermediates/pre-dexed/debug/support-annotations-21.0.3-f631621b09e8d1b379e773ad24790ce3be73ac1d.jar" />
+    </item>
+    <item
+        jar="/Users/nao/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib/0.11.91.4/c29ef01063ec696fc9028d9568a050bab294a8fa/kotlin-stdlib-0.11.91.4.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="c29ef01063ec696fc9028d9568a050bab294a8fa">
+        <dex dex="/Users/nao/learning/reakt/app/build/intermediates/pre-dexed/debug/kotlin-stdlib-0.11.91.4-a5530570a0d9a9aef751f4cfec07277cd6c8def9.jar" />
+    </item>
+
+</items>
