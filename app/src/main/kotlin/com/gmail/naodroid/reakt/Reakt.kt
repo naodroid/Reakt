@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Context
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AbsListView
 import android.widget.Button
 import java.util
 import java.util.ArrayList
@@ -101,7 +102,15 @@ public class Reakt {
 			if (clazz.equals(javaClass<View>())) {
 				return null;
 			}
-			clazz = clazz.getGenericSuperclass() as Class<*>
+			try {
+				clazz = clazz.getGenericSuperclass() as Class<*>
+			} catch (e : Throwable) {
+				clazz = if (view is ViewGroup) {
+					javaClass<ViewGroup>()
+				} else {
+					javaClass<View>()
+				}
+			}
 		}
 		return null
 	}

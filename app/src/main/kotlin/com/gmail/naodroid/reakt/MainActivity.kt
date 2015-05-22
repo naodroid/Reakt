@@ -10,6 +10,7 @@ import android.widget.GridLayout
 import android.widget.LinearLayout
 import android.widget.TextView
 import com.gmail.naodroid.reakt.ext.*
+import com.gmail.naodroid.reakt.listview.listView
 import java.util.ArrayList
 import kotlin.properties.Delegates
 
@@ -18,11 +19,13 @@ import kotlin.properties.Delegates
  */
 
 public class MainActivity : Activity() {
-	//
+	private var mItems = ArrayList<String>()
+
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
 		
 		var count = 0;
+
 		val reakt = Reakt(this) {
 			//define default style
 			ButtonStyle = buttonStyle
@@ -35,27 +38,42 @@ public class MainActivity : Activity() {
 					textBind = {"" + count} //binding variable to view
 				}
 				
-				gridLayout {
-					layoutSize = wrap_wrap
-					orientation = GridLayout.HORIZONTAL
-					rowCount = 4
-					columnCount = 3
-					
-					
-					for (i in 1..10) {
-						val j = i % 10;
-						val span = if (j == 0) 3 else 1
-						button {
-							text = "" + j
-							rowSpec = GridSpec(span, 1f)
-						}
+				listView<String> {
+					weight = 1f
+					listItemsBind = { mItems }
+					cellCreator = { (item) -> cellCreator(item) }
+				}
+
+				button {
+					text = "add"
+					onClick = {
+						mItems.add("COUNT " + mItems.count())
+						update()
 					}
 				}
 			}
 		}	
-		
 		setContentView(reakt.toView())
 	}
+	private fun cellCreator(item : String) : Reakt {
+		return Reakt(this) {
+			horizontalLayout {
+				textView {
+					margin = dip(10)
+					weight = 1f
+					text = item
+				}
+				textView {
+					text = ">"
+					marginLeft = dip(10)
+				}
+			}
+		}
+	}
+	private fun onButtonClick() {
+
+	}
+
 	
 	val textStyle = Style<TextView> {
 		layoutSize = wrap_wrap
