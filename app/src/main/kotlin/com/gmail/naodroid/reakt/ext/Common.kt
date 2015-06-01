@@ -4,7 +4,7 @@ import android.content.Context
 import android.view.View
 import android.view.ViewGroup
 import com.gmail.naodroid.reakt.Reakt
-import com.gmail.naodroid.reakt.Style
+import com.gmail.naodroid.reakt.ViewStyle
 
 /**
  * Created by nao on 15/05/21.
@@ -47,7 +47,7 @@ public fun convertRGB(color : Int) : Int {
  * }
  * 
  */
-fun Reakt.commonProcess<T : View>(view : T, style : Style<in T>?, block : T.() -> Unit) : Unit {
+fun Reakt.commonProcess<T : View>(view : T, style : ViewStyle<in T>?, block : T.() -> Unit) : Unit {
 	//add to parent
 	val parent = this.currentViewGroup()
 	if (parent != null) {

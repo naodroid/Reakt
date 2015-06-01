@@ -3,7 +3,7 @@ package com.gmail.naodroid.reakt.ext
 import android.view.View
 import android.widget.GridLayout
 import com.gmail.naodroid.reakt.Reakt
-import com.gmail.naodroid.reakt.Style
+import com.gmail.naodroid.reakt.ViewStyle
 
 /**
  * Created by nao on 15/05/22.
@@ -15,7 +15,7 @@ import com.gmail.naodroid.reakt.Style
 fun Reakt.gridLayout(block : GridLayout.() -> Unit) : GridLayout {
 	return gridLayout(null, block);
 }
-fun Reakt.gridLayout(style : Style<in GridLayout>?, block : GridLayout.() -> Unit) : GridLayout {
+fun Reakt.gridLayout(style : ViewStyle<in GridLayout>?, block : GridLayout.() -> Unit) : GridLayout {
 	val layout = GridLayout(this.context)
 	commonProcess(layout, style, block)
 	return layout

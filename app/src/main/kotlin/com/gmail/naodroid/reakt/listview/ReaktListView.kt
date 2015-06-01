@@ -7,7 +7,8 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.ListView
 import com.gmail.naodroid.reakt.Reakt
-import com.gmail.naodroid.reakt.Style
+import com.gmail.naodroid.reakt.ReusableReakt
+import com.gmail.naodroid.reakt.ViewStyle
 import com.gmail.naodroid.reakt.ext.commonProcess
 
 /**
@@ -42,7 +43,7 @@ public class ReaktListView<T> : ListView {
         set(value) = Reakt.addBinding { listItems = value() }
 
     //create cell view from item
-    public var cellCreator : ((T) -> Reakt)? = null
+    public var cellCreator : (() -> ReusableReakt<T>)? = null
     //adapter
     private val adapter = ItemAdapter()
 
@@ -76,12 +77,20 @@ public class ReaktListView<T> : ListView {
             return this@ReaktListView.listItems?.count() ?: 0
         }
         override fun getView(position: Int, view: View?, parent: ViewGroup): View? {
-            //FIXME: has performance issue. re-create view at all time. Need to recycle view
             val item = this@ReaktListView.listItems!!.elementAt(position)
             val block = this@ReaktListView.cellCreator
             if (block != null) {
-                val reakt = block(item)
-                return reakt.toView()
+                val related = view?.getTag() as? ReusableReakt<T>
+                
+                if (related != null) {
+                    related.updateWithItem(item)
+                    return view
+                }
+                val reakt = block()
+                reakt.updateWithItem(item)
+                val ret = reakt.toView()
+                ret.setTag(reakt)
+                return ret
             }
             return null
         }
@@ -101,12 +110,12 @@ public class ReaktListView<T> : ListView {
 fun Reakt.listView<T>(block : ReaktListView<T>.() -> Unit) : ReaktListView<T> {
     return listView(null, block)
 }
-fun Reakt.listView<T>(style : Style<in ReaktListView<T>>?, block : ReaktListView<T>.() -> Unit) : ReaktListView<T> {
+fun Reakt.listView<T>(style : ViewStyle<in ReaktListView<T>>?, block : ReaktListView<T>.() -> Unit) : ReaktListView<T> {
     val listView = ReaktListView<T>(this.context)
     commonProcess(listView, style, block)
     return listView
 }
 
-public var Reakt.ReaktListViewStyle : Style<ReaktListView<*>>
+public var Reakt.ReaktListViewStyle : ViewStyle<ReaktListView<*>>
     get() = throw UnsupportedOperationException()
     set(value) = Reakt.registerDefaultStyle(javaClass<ReaktListView<*>>(), value)

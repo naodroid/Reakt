@@ -7,7 +7,8 @@ import android.os.Looper
 import android.widget.Button
 import android.widget.FrameLayout
 import com.gmail.naodroid.reakt.Reakt
-import com.gmail.naodroid.reakt.Style
+import com.gmail.naodroid.reakt.ReusableReakt
+import com.gmail.naodroid.reakt.ViewStyle
 import com.gmail.naodroid.reakt.ext.*
 import com.gmail.naodroid.reakt.listview.listView
 import java.util.ArrayList
@@ -60,7 +61,7 @@ public class StopWatchView : FrameLayout {
                     layoutSize = LayoutSize(fill, 0)
                     weight = 1f
                     listItemsBind = { mTimeList }
-                    cellCreator = {(num) -> timeCellCreator(num)}
+                    cellCreator = { this@StopWatchView.createListReakt() }
                 }
             }
         }
@@ -105,8 +106,8 @@ public class StopWatchView : FrameLayout {
         mTimeList.clear()
         mReakt.update()
     }
-    fun timeCellCreator(time : Int) : Reakt {
-        return Reakt(getContext()) {
+    fun createListReakt() : ReusableReakt<Int> {
+        return ReusableReakt(getContext()) {
             horizontalLayout {
                 margin = dip(10)
 
@@ -114,7 +115,7 @@ public class StopWatchView : FrameLayout {
                     textSize = 30f
                     textColor = Color.WHITE
                     marginLeft = dip(30)
-                    text = createTimeText(time)
+                    textBind =  { createTimeText(reaktItem!!) }
                 }
             }
         }
@@ -159,7 +160,7 @@ public class StopWatchView : FrameLayout {
     }
     //--------------------------------------------------------------
     //styles
-    val buttonStyle = Style<Button> {
+    val buttonStyle = ViewStyle<Button> {
         layoutWidth = 0
         layoutHeight = dip(50)
         weight = 1f

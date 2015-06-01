@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
 import com.gmail.naodroid.reakt.Reakt
-import com.gmail.naodroid.reakt.Style
+import com.gmail.naodroid.reakt.ViewStyle
 import com.gmail.naodroid.reakt.ext
 
 /**
@@ -21,13 +21,13 @@ import com.gmail.naodroid.reakt.ext
 fun Reakt.textView(block : TextView.() -> Unit) : TextView {
 	return textView(null, block)
 }
-fun Reakt.textView(style : Style<in TextView>?, block : TextView.() -> Unit) : TextView {
+fun Reakt.textView(style : ViewStyle<in TextView>?, block : TextView.() -> Unit) : TextView {
 	val textView = TextView(this.context)
 	commonProcess(textView, style, block)
 	return textView
 }
 
-public var Reakt.TextViewStyle : Style<TextView>
+public var Reakt.TextViewStyle : ViewStyle<TextView>
 	get() = throw UnsupportedOperationException()
 	set(value) = Reakt.registerDefaultStyle(javaClass<TextView>(), value)
 

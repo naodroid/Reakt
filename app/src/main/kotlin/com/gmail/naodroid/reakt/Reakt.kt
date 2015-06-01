@@ -16,7 +16,7 @@ import kotlin.properties.ReadOnlyProperty
  * Created by nao on 15/05/19.
  */
 
-public class Reakt {
+public open class Reakt {
 	
 	val context : Context
 	private val stack = Stack<ViewGroup>()
@@ -78,26 +78,26 @@ public class Reakt {
 
 	//Default Styles management---------------------
 	
-	//map for storing (Class-Style) set
-	private val defaultStyleMap = HashMap<Class<*>, Style<*>>()
+	//map for storing (Class-ViewStyle) set
+	private val defaultStyleMap = HashMap<Class<*>, ViewStyle<*>>()
 
 	/**
-	 * Register Default Style for View Class.
+	 * Register Default ViewStyle for View Class.
 	 * When you want to create your custom-View default style, you need to use this
 	 * See TextView.kt
 	 */
-	public fun registerDefaultStyle<T : View>(clazz : Class<T>, style : Style<T>) {
+	public fun registerDefaultStyle<T : View>(clazz : Class<T>, style : ViewStyle<T>) {
 		defaultStyleMap.put(clazz, style)
 	}
 	/**
 	 * Returns default style of view.
 	 */
-	public fun getDefaultStyle<T : View>(view : T) : Style<T>? {
+	public fun getDefaultStyle<T : View>(view : T) : ViewStyle<T>? {
 		var clazz : Class<*> = view.javaClass
 		while (true) {
 			val style = defaultStyleMap.get(clazz)
 			if (style != null) {
-				return style as Style<T>
+				return style as ViewStyle<T>
 			}
 			if (clazz.equals(javaClass<View>())) {
 				return null;
@@ -141,13 +141,13 @@ public class Reakt {
 		/**
 		 * shortcut for Reakt.current().registerDefaultStyle
 		 */
-		fun registerDefaultStyle<T : View>(clazz : Class<T>, style : Style<T>) {
+		fun registerDefaultStyle<T : View>(clazz : Class<T>, style : ViewStyle<T>) {
 			current().registerDefaultStyle(clazz, style)
 		}
 		/**
 		 * shortcut for Reakt.current().getDefaultStyle
 		 */
-		fun getDefaultStyle<T : View>(view : T) : Style<T>? {
+		fun getDefaultStyle<T : View>(view : T) : ViewStyle<T>? {
 			return current().getDefaultStyle(view)
 		}
 	}

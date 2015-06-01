@@ -9,7 +9,7 @@ import android.support.v4.view.ViewPager
 import android.view.View
 import android.view.ViewGroup
 import com.gmail.naodroid.reakt.Reakt
-import com.gmail.naodroid.reakt.Style
+import com.gmail.naodroid.reakt.ViewStyle
 
 /**
  * Created by nao on 15/05/23.
@@ -17,7 +17,7 @@ import com.gmail.naodroid.reakt.Style
 fun Reakt.viewPager(block : ViewPager.() -> Unit) : ViewPager {
     return viewPager(null, block)
 }
-fun Reakt.viewPager(style : Style<in ViewPager>?, block : ViewPager.() -> Unit) : ViewPager {
+fun Reakt.viewPager(style : ViewStyle<in ViewPager>?, block : ViewPager.() -> Unit) : ViewPager {
     val layout = ViewPager(this.context)
     commonProcess(layout, style, block)
     return layout

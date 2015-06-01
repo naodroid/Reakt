@@ -4,7 +4,7 @@ import android.view.View
 import android.widget.FrameLayout
 import android.widget.LinearLayout
 import com.gmail.naodroid.reakt.Reakt
-import com.gmail.naodroid.reakt.Style
+import com.gmail.naodroid.reakt.ViewStyle
 
 /**
  * Created by nao on 15/05/21.
@@ -17,7 +17,7 @@ import com.gmail.naodroid.reakt.Style
 fun Reakt.verticalLayout(block : LinearLayout.() -> Unit) : LinearLayout {
 	return verticalLayout(null, block);
 }
-fun Reakt.verticalLayout(style : Style<in LinearLayout>?, block : LinearLayout.() -> Unit) : LinearLayout {
+fun Reakt.verticalLayout(style : ViewStyle<in LinearLayout>?, block : LinearLayout.() -> Unit) : LinearLayout {
 	val layout = LinearLayout(this.context)
 	layout.setOrientation(LinearLayout.VERTICAL)
 	commonProcess(layout, style, block)
@@ -28,7 +28,7 @@ fun Reakt.horizontalLayout(block : LinearLayout.() -> Unit) : LinearLayout {
 	return horizontalLayout(null, block)
 }
 
-fun Reakt.horizontalLayout(style : Style<in LinearLayout>?, block : LinearLayout.() -> Unit) : LinearLayout {
+fun Reakt.horizontalLayout(style : ViewStyle<in LinearLayout>?, block : LinearLayout.() -> Unit) : LinearLayout {
 	val layout = LinearLayout(this.context)
 	layout.setOrientation(LinearLayout.HORIZONTAL)
 	commonProcess(layout, style, block)

@@ -4,7 +4,7 @@ import android.graphics.Color
 import android.view.Gravity
 import android.view.View
 import android.widget.TextView
-import com.gmail.naodroid.reakt.Style
+import com.gmail.naodroid.reakt.ViewStyle
 import com.gmail.naodroid.reakt.apply
 import com.gmail.naodroid.reakt.ext.*
 
@@ -13,13 +13,13 @@ import com.gmail.naodroid.reakt.ext.*
  */
 
 object CommonStyle {
-    val background = Style<View> {
+    val background = ViewStyle<View> {
         backgroundColor = 0x0C00CC
     }
-    val text = Style<TextView> {
+    val text = ViewStyle<TextView> {
         textColor = Color.WHITE
     }
-    val mainText = Style<TextView> {
+    val mainText = ViewStyle<TextView> {
         apply(CommonStyle.text)
         textSize = 68f
         gravity = Gravity.CENTER

@@ -9,7 +9,7 @@ import android.widget.Button
 import android.widget.ImageView
 import com.gmail.naodroid.reakt.R
 import com.gmail.naodroid.reakt.Reakt
-import com.gmail.naodroid.reakt.Style
+import com.gmail.naodroid.reakt.ViewStyle
 import com.gmail.naodroid.reakt.ext.*
 
 /**
@@ -92,7 +92,7 @@ public class ClockActivity : Activity() {
 
     //--------------------------------------------------------------
     //Styles
-    val tabButtonStyle = Style<ImageView> {
+    val tabButtonStyle = ViewStyle<ImageView> {
         layoutWidth = dip(0)
         layoutHeight = dip(50)
         backgroundColor = Color.TRANSPARENT

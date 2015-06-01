@@ -6,7 +6,7 @@ import android.view.View
 import android.widget.FrameLayout
 import android.widget.LinearLayout
 import com.gmail.naodroid.reakt.Reakt
-import com.gmail.naodroid.reakt.Style
+import com.gmail.naodroid.reakt.ViewStyle
 
 /**
  * Created by nao on 15/05/21.
@@ -18,13 +18,13 @@ import com.gmail.naodroid.reakt.Style
 fun Reakt.view(block : View.() -> Unit) : View {
 	return view(null, block)
 }
-fun Reakt.view(style : Style<in View>?, block : View.() -> Unit) : View {
+fun Reakt.view(style : ViewStyle<in View>?, block : View.() -> Unit) : View {
 	val view = View(this.context)
 	commonProcess(view, style, block)
 	return view
 }
 
-public var Reakt.ViewStyle : Style<View>
+public var Reakt.ViewStyle : ViewStyle<View>
 	get() = throw UnsupportedOperationException()
 	set(value) = Reakt.registerDefaultStyle(javaClass<View>(), value)
 

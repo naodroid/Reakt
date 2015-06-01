@@ -7,7 +7,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.FrameLayout
 import com.gmail.naodroid.reakt.Reakt
-import com.gmail.naodroid.reakt.Style
+import com.gmail.naodroid.reakt.ViewStyle
 import com.gmail.naodroid.reakt.ext.*
 
 /**
@@ -135,7 +135,7 @@ public class TimerView : FrameLayout {
 
     //--------------------------------------------------------------
     //style
-    val numberButtonStyle = Style<Button> {
+    val numberButtonStyle = ViewStyle<Button> {
         layoutWidth = dip(80)
         layoutHeight = dip(50)
         textSize = 24f

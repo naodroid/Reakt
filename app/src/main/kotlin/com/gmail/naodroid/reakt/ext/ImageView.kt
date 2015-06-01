@@ -3,7 +3,7 @@ package com.gmail.naodroid.reakt.ext
 import android.graphics.drawable.Drawable
 import android.widget.ImageView
 import com.gmail.naodroid.reakt.Reakt
-import com.gmail.naodroid.reakt.Style
+import com.gmail.naodroid.reakt.ViewStyle
 
 /**
  * Created by nao on 15/05/22.
@@ -13,13 +13,13 @@ import com.gmail.naodroid.reakt.Style
 fun Reakt.imageView(block : ImageView.() -> Unit) : ImageView {
 	return imageView(null, block)
 }
-fun Reakt.imageView(style : Style<in ImageView>?, block : ImageView.() -> Unit) : ImageView {
+fun Reakt.imageView(style : ViewStyle<in ImageView>?, block : ImageView.() -> Unit) : ImageView {
 	val textView = ImageView(this.context)
 	commonProcess(textView, style, block)
 	return textView
 }
 
-public var Reakt.ImageStyle : Style<ImageView>
+public var Reakt.ImageStyle : ViewStyle<ImageView>
 	get() = throw UnsupportedOperationException()
 	set(value) = Reakt.registerDefaultStyle(javaClass<ImageView>(), value)
 
