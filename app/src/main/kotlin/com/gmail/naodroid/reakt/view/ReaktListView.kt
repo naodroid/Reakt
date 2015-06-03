@@ -1,4 +1,4 @@
-package com.gmail.naodroid.reakt.listview
+package com.gmail.naodroid.reakt.view
 
 import android.content.Context
 import android.util.AttributeSet

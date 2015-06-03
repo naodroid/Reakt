@@ -10,7 +10,7 @@ import com.gmail.naodroid.reakt.Reakt
 import com.gmail.naodroid.reakt.ReusableReakt
 import com.gmail.naodroid.reakt.ViewStyle
 import com.gmail.naodroid.reakt.ext.*
-import com.gmail.naodroid.reakt.listview.listView
+import com.gmail.naodroid.reakt.view.listView
 import java.util.ArrayList
 
 /**

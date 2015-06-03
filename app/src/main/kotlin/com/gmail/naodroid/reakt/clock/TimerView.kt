@@ -1,6 +1,7 @@
 package com.gmail.naodroid.reakt.clock
 
 import android.content.Context
+import android.graphics.Color
 import android.os.Handler
 import android.view.Gravity
 import android.view.View
@@ -9,6 +10,8 @@ import android.widget.FrameLayout
 import com.gmail.naodroid.reakt.Reakt
 import com.gmail.naodroid.reakt.ViewStyle
 import com.gmail.naodroid.reakt.ext.*
+import com.gmail.naodroid.reakt.view.SimpleProgressBar
+import com.gmail.naodroid.reakt.view.simpleProgressBar
 
 /**
  * Created by nao on 15/05/23.
@@ -20,6 +23,7 @@ public class TimerView : FrameLayout {
 
     private var mTimerRunning = false
     private var mLastSecond = 0
+    private var mStartSecond = 0
     private val mHandler = Handler()
 
     //--------------------------------------------------------------
@@ -31,6 +35,10 @@ public class TimerView : FrameLayout {
                 //remain time
                 textView(CommonStyle.mainText) {
                     textBind = {remainTimeText()}
+                }
+                simpleProgressBar(progressStyle) {
+                    max = 100
+                    progressBind = {getTimerProgress()}
                 }
                 //inputting
                 gridLayout {
@@ -76,8 +84,21 @@ public class TimerView : FrameLayout {
         val sec = second % 60
         return min * 100 + sec
     }
+    fun getTimerProgress() : Int {
+        if (mLastSecond == 0) {
+            return 0
+        }
+        if (!mTimerRunning) {
+            return 100
+        }
+        if (mStartSecond == 0) {
+            return 0
+        }
+        return (mLastSecond * 100) / mStartSecond
+    }
 
 
+    //Event
     fun onNumberClick(num : Int) {
         if (mTimerRunning) {
             return
@@ -98,11 +119,13 @@ public class TimerView : FrameLayout {
         if (!mTimerRunning) {
             return
         }
+        mLastSecond = 0
         stopTimer()
     }
     //
     fun startTimer() {
         mTimerRunning = true
+        mStartSecond = mLastSecond
         mReakt.update()
         intervalProcess()
     }
@@ -139,6 +162,14 @@ public class TimerView : FrameLayout {
         layoutWidth = dip(80)
         layoutHeight = dip(50)
         textSize = 24f
+    }
+    val progressStyle = ViewStyle<SimpleProgressBar> {
+        layoutWidth = fill
+        layoutHeight = dip(1)
+        marginLeft = dip(16)
+        marginRight = dip(16)
+        backgroundColor = Color.WHITE
+        progressColor = Color.parseColor("F62459")
     }
 
 }
