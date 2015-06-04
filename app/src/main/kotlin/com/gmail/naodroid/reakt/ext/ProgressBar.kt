@@ -31,7 +31,7 @@ public var ProgressBar.progress : Int
     get() = this.getProgress()
     set(value) = this.setProgress(value)
 public var ProgressBar.progressBind : () -> Int
-    get() = UnsupportedOperationException()
+    get() = throw UnsupportedOperationException()
     set(value) {
         Reakt.addBinding { setProgress(value()) }
     }
@@ -40,7 +40,7 @@ public var ProgressBar.secondaryProgress : Int
     get() = this.getSecondaryProgress()
     set(value) = this.setSecondaryProgress(value)
 public var ProgressBar.secondaryProgressBind : () -> Int
-    get() = UnsupportedOperationException()
+    get() = throw UnsupportedOperationException()
     set(value) {
         Reakt.addBinding { setSecondaryProgress(value()) }
     }

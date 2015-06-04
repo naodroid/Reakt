@@ -48,7 +48,7 @@ public var ViewPager.currentPageBind : () -> Int
 public var ViewPager.onPageChanged : (Int) -> Unit
     get() = throw UnsupportedOperationException()
     set(value) {
-        setOnPageChangeListener(object: ViewPager.OnPageChangeListener {
+        addOnPageChangeListener(object: ViewPager.OnPageChangeListener {
             override fun onPageSelected(position: Int) {
                 value(position)
             }

@@ -2,8 +2,10 @@ package com.gmail.naodroid.reakt.view
 
 import android.content.Context
 import android.graphics.Color
+import android.graphics.drawable.ClipDrawable
 import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.LayerDrawable
+import android.view.Gravity
 import android.widget.ProgressBar
 import com.gmail.naodroid.reakt.Reakt
 import com.gmail.naodroid.reakt.ViewStyle
@@ -17,10 +19,10 @@ import com.gmail.naodroid.reakt.ext.commonProcess
  */
 public class SimpleProgressBar : ProgressBar {
 
-    public var backgroundColor : Int = Color.GRAY
-        get() = $backgroundColor
+    public var progressBackgroundColor : Int = Color.GRAY
+        get() = $progressBackgroundColor
         set(value) {
-            $backgroundColor = value
+            $progressBackgroundColor = value
             this@SimpleProgressBar.updateLayerDrawable()
         }
     public var progressColor : Int = Color.BLUE
@@ -29,17 +31,23 @@ public class SimpleProgressBar : ProgressBar {
             $progressColor = value
             this@SimpleProgressBar.updateLayerDrawable()
         }
+    public var progressOrientation : Int = Gravity.LEFT
+        get() = $progressOrientation
+        set(value) {
+            $progressOrientation = value
+            this@SimpleProgressBar.updateLayerDrawable()
+        }
 
-    constructor(context : Context) : super(context) {
+    constructor(context : Context) : super(context, null, android.R.style.Widget_ProgressBar_Horizontal) {
         updateLayerDrawable()
     }
 
 
     private fun updateLayerDrawable() {
-        val bg = ColorDrawable(backgroundColor)
-        val bar = ColorDrawable(progressColor)
+        val bg = ColorDrawable(progressBackgroundColor)
+        val bar = ClipDrawable(ColorDrawable(progressColor), this.progressOrientation, ClipDrawable.HORIZONTAL);
 
-        val layer = LayerDrawable(Array(bg, bar))
+        val layer = LayerDrawable(arrayOf(bg, bar))
         layer.setId(0, android.R.id.background)
         layer.setId(1, android.R.id.progress)
 

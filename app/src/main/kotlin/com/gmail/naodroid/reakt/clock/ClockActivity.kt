@@ -19,9 +19,9 @@ import com.gmail.naodroid.reakt.ext.*
 public class ClockActivity : Activity() {
 
     enum class Tab (val iconId : Int) {
-        Clock : Tab(R.drawable.tab_icon_clock)
-        StopWatch : Tab(R.drawable.tab_icon_stopwatch)
-        Timer : Tab(R.drawable.tab_icon_timer)
+        Clock(R.drawable.tab_icon_clock),
+        StopWatch(R.drawable.tab_icon_stopwatch),
+        Timer(R.drawable.tab_icon_timer)
     }
 
     private var mCurrentTab = Tab.Clock
@@ -37,7 +37,7 @@ public class ClockActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val innerViews = array(ClockView(this), StopWatchView(this), TimerView(this))
+        val innerViews = arrayOf(ClockView(this), StopWatchView(this), TimerView(this))
 
         mReakt = Reakt(this) {
             verticalLayout(CommonStyle.background) {
@@ -48,7 +48,7 @@ public class ClockActivity : Activity() {
                     weight = 1f
                     views = innerViews
                     currentPageBind = {getCurrentTabIndex()}
-                    onPageChanged = {(page) -> this@ClockActivity.onPageChanged(page)}
+                    onPageChanged = { page -> this@ClockActivity.onPageChanged(page)}
                 }
                 //bottom tab buttons
                 horizontalLayout {

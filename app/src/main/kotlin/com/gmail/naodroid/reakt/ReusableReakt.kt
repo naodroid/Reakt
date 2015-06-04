@@ -27,7 +27,7 @@ import android.view.View
 public class ReusableReakt<T> : Reakt {
     private val block : ReusableReakt<T>.() -> View
 
-    public var reaktItem : T? = null
+    public var reaktItem : (T?) = null
         private set
 
     constructor(context: Context, block : ReusableReakt<T>.() -> View) : super(context, block as Reakt.() -> View) {

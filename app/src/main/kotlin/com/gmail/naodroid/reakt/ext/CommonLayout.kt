@@ -34,6 +34,10 @@ public val fill_fill : LayoutSize = LayoutSize(fill, fill)
 
 
 //----------------------------------------------------------------
+//margin class
+public data class Margin4(val left: Int, val top: Int, val right: Int, val bottom : Int)
+public data class Margin2(val topOrLeft: Int, val bottomOrRight: Int);
+
 //Margin
 private fun View.getMarginLayoutParams() : ViewGroup.MarginLayoutParams? {
 	return getLayoutParams() as? ViewGroup.MarginLayoutParams
@@ -41,28 +45,45 @@ private fun View.getMarginLayoutParams() : ViewGroup.MarginLayoutParams? {
 public var View.margin : Int
 	get() = 0  //getter not supported
 	set(value) { 
+		this.margin4 = Margin4(value, value, value, value)
+	}
+public var View.margin4 : Margin4 
+	get() = Margin4(this.marginLeft, this.marginTop, this.marginRight, this.marginBottom)
+	set(value) {
 		val margin = getMarginLayoutParams()
 		if (margin == null) {
 			return
 		}
-		margin.topMargin = value
-		margin.bottomMargin = value
-		margin.leftMargin = value
-		margin.rightMargin = value
+		margin.leftMargin = value.left
+		margin.topMargin = value.top
+		margin.rightMargin = value.right
+		margin.bottomMargin = value.bottom
 	}
-public var View.marginTop : Int
-	get() = getMarginLayoutParams()?.topMargin ?: 0
-	set(value) { getMarginLayoutParams()?.topMargin = value }
-public var View.marginBottom : Int
-	get() = getMarginLayoutParams()?.bottomMargin ?: 0
-	set(value) { getMarginLayoutParams()?.bottomMargin = value }
+public var View.marginVertical : Margin2
+	get() = Margin2(this.marginTop, this.marginBottom)
+	set(value) {
+		this.marginTop = value.topOrLeft
+		this.marginBottom = value.bottomOrRight
+	}
+public var View.marginHorizontal : Margin2
+	get() = Margin2(this.marginLeft, this.marginRight)
+	set(value) {
+		this.marginLeft = value.topOrLeft
+		this.marginRight = value.bottomOrRight
+	}
+
+
 public var View.marginLeft : Int
 	get() = getMarginLayoutParams()?.leftMargin ?: 0
 	set(value) { getMarginLayoutParams()?.leftMargin = value }
+public var View.marginTop : Int
+	get() = getMarginLayoutParams()?.topMargin ?: 0
+	set(value) { getMarginLayoutParams()?.topMargin = value }
 public var View.marginRight : Int
 	get() = getMarginLayoutParams()?.rightMargin ?: 0
 	set(value) { getMarginLayoutParams()?.rightMargin = value }
-
-
+public var View.marginBottom : Int
+	get() = getMarginLayoutParams()?.bottomMargin ?: 0
+	set(value) { getMarginLayoutParams()?.bottomMargin = value }
 
 

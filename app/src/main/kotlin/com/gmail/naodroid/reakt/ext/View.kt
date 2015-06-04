@@ -28,12 +28,48 @@ public var Reakt.ViewStyle : ViewStyle<View>
 	get() = throw UnsupportedOperationException()
 	set(value) = Reakt.registerDefaultStyle(javaClass<View>(), value)
 
-
 //----------------------------------------------------------------
+public data class Padding4(val left: Int, val top: Int, val right: Int, val bottom: Int)
+public data class Padding2(val topOrLeft: Int, val bottomOrRight: Int)
+
 //padding
 public var View.padding : Int
 	get() = throw UnsupportedOperationException()
 	set(value) = this.setPadding(value, value, value, value)
+public var View.padding4 : Padding4
+	get() = Padding4(this.paddingLeft, this.paddingTop, this.paddingRight, this.paddingBottom)
+	set(value) {
+		this.setPadding(value.left, value.top, value.right, value.bottom)
+	}
+public var View.paddingVertical : Padding2
+	get() = Padding2(this.paddingTop, this.paddingBottom)
+	set(value) {
+		this.paddingTop = value.topOrLeft
+		this.paddingBottom = value.bottomOrRight
+	}
+
+public var View.paddingHorizontal : Padding2
+	get() = Padding2(this.paddingLeft, this.paddingRight)
+	set(value) {
+		this.paddingLeft = value.topOrLeft
+		this.paddingRight = value.bottomOrRight
+	}
+
+public var View.paddingLeft : Int
+	get() = this.getPaddingLeft()
+	set(value) = this.setPadding(value, this.getPaddingTop(), this.getPaddingRight(), this.getPaddingBottom())
+public var View.paddingTop : Int
+	get() = this.getPaddingTop()
+	set(value) = this.setPadding(this.paddingLeft, value, this.getPaddingRight(), this.getPaddingBottom())
+public var View.paddingRight : Int
+	get() = this.getPaddingRight()
+	set(value) = this.setPadding(this.paddingLeft, this.getPaddingTop(), value, this.getPaddingBottom())
+public var View.paddingBottom : Int
+	get() = this.getPaddingBottom()
+	set(value) = this.setPadding(this.paddingLeft, this.getPaddingTop(), this.getPaddingRight(), value)
+
+
+
 
 //----------------------------------------------------------------
 //Properties

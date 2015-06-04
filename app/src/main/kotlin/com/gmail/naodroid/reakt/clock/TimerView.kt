@@ -22,6 +22,8 @@ public class TimerView : FrameLayout {
     private val mReakt : Reakt
 
     private var mTimerRunning = false
+    private var mTimerStartTime : Long = 0
+    private var mTimerDuration = 0;
     private var mLastSecond = 0
     private var mStartSecond = 0
     private val mHandler = Handler()
@@ -84,7 +86,24 @@ public class TimerView : FrameLayout {
         val sec = second % 60
         return min * 100 + sec
     }
+    //
+    fun getRemainTime() {
+        if (mTimerRunning) {
+            val time = System.currentTimeMillis();
+            val diff = ((time - mTimerStartTime) / 100).toInt()
+            return diff / mTimerDuration
+        }
+    }
+    
     fun getTimerProgress() : Int {
+        if (mTimerRunning) {
+            val time = System.currentTimeMillis();
+            val diff = ((time - mTimerStartTime) / 100).toInt()
+            return diff / mTimerDuration
+        }
+        if (mTimerDuration > 0) {
+            
+        }
         if (mLastSecond == 0) {
             return 0
         }
@@ -164,12 +183,11 @@ public class TimerView : FrameLayout {
         textSize = 24f
     }
     val progressStyle = ViewStyle<SimpleProgressBar> {
-        layoutWidth = fill
-        layoutHeight = dip(1)
-        marginLeft = dip(16)
-        marginRight = dip(16)
-        backgroundColor = Color.WHITE
-        progressColor = Color.parseColor("F62459")
+        layoutSize = LayoutSize(fill, dip(3))
+        marginHorizontal = Margin2(8, 8)
+        progressBackgroundColor = Color.WHITE
+        progressColor = "#F62459".toColor()
+        progressOrientation = Gravity.RIGHT
     }
 
 }

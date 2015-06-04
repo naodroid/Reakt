@@ -3,6 +3,7 @@ package com.gmail.naodroid.reakt.ext
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.AttributeSet
+import android.util.TypedValue
 import android.view.Gravity
 import android.view.View
 import android.view.ViewGroup
@@ -66,6 +67,12 @@ public var TextView.textSizeBind : () -> Float
 	get() = throw UnsupportedOperationException()
 	set(value) = Reakt.addBinding { setTextSize(value()) }
 
+public var TextView.textSizeDip : Float
+	get() = getTextSize()
+	set(value) = setTextSize(TypedValue.COMPLEX_UNIT_DIP, value)
+public var TextView.textSizeDipBind : () -> Float
+	get() = throw UnsupportedOperationException()
+	set(value) = Reakt.addBinding { setTextSize(TypedValue.COMPLEX_UNIT_DIP, value()) }
 //Gravity
 public var TextView.gravity : Int
 	get() = this.getGravity()

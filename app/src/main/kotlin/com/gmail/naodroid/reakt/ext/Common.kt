@@ -23,18 +23,6 @@ public fun Context.dip(value: Float): Int =
 public fun View.dip(value: Int): Int = getContext().dip(value)
 public fun View.dip(value: Float): Int = getContext().dip(value)
 
-//convert HEX RGB to ARGB.
-// ex: 0xFFFFF -> 0xFFFFFFFF
-public fun convertRGB(color : Int) : Int {
-	if (color == 0) {
-		//transparent
-		return color
-	} else if ((color ushr 24) == 0) {
-		//add 0xFF00000
-		return (0xFF shl 24) or color
-	}
-	return color
-}
 
 /**
  * call this function when creating new Reakt view method.
