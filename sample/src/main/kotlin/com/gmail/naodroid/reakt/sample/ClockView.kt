@@ -1,4 +1,4 @@
-package com.gmail.naodroid.reakt.clock
+package com.gmail.naodroid.reakt.sample
 
 import android.app.Fragment
 import android.content.Context
@@ -11,6 +11,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
+import com.gmail.naodroid.reakt
 import com.gmail.naodroid.reakt.Reakt
 import com.gmail.naodroid.reakt.ext.*
 import java.util.Calendar

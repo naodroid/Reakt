@@ -1,4 +1,4 @@
-package com.gmail.naodroid.reakt.clock
+package com.gmail.naodroid.reakt.sample
 
 import android.app.Activity
 import android.graphics.Color
@@ -7,7 +7,7 @@ import android.os.PersistableBundle
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
-import com.gmail.naodroid.reakt.R
+import com.gmail.naodroid.reakt
 import com.gmail.naodroid.reakt.Reakt
 import com.gmail.naodroid.reakt.ViewStyle
 import com.gmail.naodroid.reakt.ext.*

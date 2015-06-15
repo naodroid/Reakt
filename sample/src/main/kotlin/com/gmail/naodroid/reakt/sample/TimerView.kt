@@ -1,4 +1,4 @@
-package com.gmail.naodroid.reakt.clock
+package com.gmail.naodroid.reakt.sample
 
 import android.content.Context
 import android.graphics.Color
@@ -87,22 +87,20 @@ public class TimerView : FrameLayout {
         return min * 100 + sec
     }
     //
-    fun getRemainTime() {
+    fun getRemainTime() : Int {
         if (mTimerRunning) {
             val time = System.currentTimeMillis();
-            val diff = ((time - mTimerStartTime) / 100).toInt()
-            return diff / mTimerDuration
+            val diff = ((time - mTimerStartTime) / 100).toLong()
+            return (diff / mTimerDuration).toInt()
         }
+        return 0
     }
     
     fun getTimerProgress() : Int {
         if (mTimerRunning) {
             val time = System.currentTimeMillis();
             val diff = ((time - mTimerStartTime) / 100).toInt()
-            return diff / mTimerDuration
-        }
-        if (mTimerDuration > 0) {
-            
+            return (diff / mTimerDuration).toInt()
         }
         if (mLastSecond == 0) {
             return 0

@@ -1,4 +1,4 @@
-package com.gmail.naodroid.reakt.clock
+package com.gmail.naodroid.reakt.sample
 
 import android.graphics.Color
 import android.view.Gravity

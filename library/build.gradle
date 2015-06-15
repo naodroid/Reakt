@@ -1,4 +1,4 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 
 android {
@@ -6,7 +6,6 @@ android {
     buildToolsVersion '22.0.1'
 
     defaultConfig {
-        applicationId "com.gmail.naodroid.reakt"
         minSdkVersion 15
         targetSdkVersion 21
         versionCode 1
