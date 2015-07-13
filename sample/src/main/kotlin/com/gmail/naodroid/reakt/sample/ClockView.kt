@@ -11,6 +11,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
+import android.widget.TextView
 import com.gmail.naodroid.reakt
 import com.gmail.naodroid.reakt.Reakt
 import com.gmail.naodroid.reakt.ext.*
@@ -73,5 +74,4 @@ public class ClockView : FrameLayout {
     private fun two(v : Int) : String {
         return CommonStyle.convertNumber(v, 2)
     }
-
 }

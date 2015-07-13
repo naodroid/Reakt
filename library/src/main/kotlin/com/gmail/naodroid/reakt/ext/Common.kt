@@ -1,10 +1,12 @@
 package com.gmail.naodroid.reakt.ext
 
 import android.content.Context
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.gmail.naodroid.reakt.Reakt
 import com.gmail.naodroid.reakt.ViewStyle
+import com.gmail.naodroid.reakt.apply
 
 /**
  * Created by nao on 15/05/21.
@@ -58,6 +60,46 @@ fun Reakt.commonProcess<T : View>(view : T, style : ViewStyle<in T>?, block : T.
 	if (isGroup) {
 		this.popStack()
 	}
+}
+
+
+/**
+ * inflate from layout resource
+ * @param layoutResId layout resource id
+ */
+public fun Reakt.inflate(layoutResId : Int) : View {
+	val inflater = LayoutInflater.from(this.context)
+	val view = inflater.inflate(layoutResId, null);
+	commonProcess(view, null, {})
+	return view
+}
+
+/**
+ * create custom view
+ * Ex:
+ * customView(MyView(context)) {
+ *    layoutWidth=fill
+ *    layoutHeight=dp(180)
+ * }
+ * @param view view for add to this reakt
+ * @param block view customization
+ * @return view, same as view parameter
+ */
+public fun <T: View> Reakt.customView(view : T, style: ViewStyle<in T>?, block: T.() -> Unit) : T {
+    commonProcess(view, style, block)
+	return view
+}
+
+/**
+ * do any operation after view creation.
+ * 
+ * ex:
+ * inflate(R.layout.main).let {
+ *    //write any code for inflated view
+ * }
+ */
+public fun <T : View> T.let(block: T.() -> Unit) : Unit {
+    this.block()
 }
 
 
