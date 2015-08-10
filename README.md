@@ -8,20 +8,19 @@ Simple example
 
 ```kotlin
 override fun onCreate(bundle : Bundle) {
-super.onCreate(bundle)
+  super.onCreate(bundle)
 
-var count = 0
-val reakt = Reakt(this) {
-verticalLayout {
-textView {
-textBind = {"COUNT:" + count}
-}
-button {
-onClick = {count++;update()}
-}
-}
-}
-setContentView(reakt.toView())
+  var count = 0
+  val reakt = Reakt(this) {
+    verticalLayout {
+    textView {
+      textBind = {"COUNT:" + count}
+    }
+    button {
+      onClick = {count++;update()}
+    }
+  }
+  setContentView(reakt.toView())
 }
 ```
 <img src="images/counter.png"/>
@@ -46,27 +45,26 @@ Ex:
 ```swift
 //define style
 val textStyle = ViewStyle<TextView>() {
-layoutWidth = fill
-layoutHeight = dp(40)
-textColor = Color.RED
-textSize = dp(20)
-gravily = Gravity.CENTER
+  layoutWidth = fill
+  layoutHeight = dp(40)
+  textColor = Color.RED
+  textSize = dp(20)
+  gravily = Gravity.CENTER
 }
 //
 override fun onCreate(bundle : Bundle) {
-super.onCreate(bundle)
-val reakt = Reakt(this) {
-verticalLayout {
-textView(textStyle) {
-text="TEST"
-}
-textView(textStyle) {
-textColor=Color.BLACK //overwrite
-text="TEST2"
-}
-}
-}
-
+  super.onCreate(bundle)
+  val reakt = Reakt(this) {
+  verticalLayout {
+      textView(textStyle) {
+        text="TEST"
+      }
+      textView(textStyle) {
+        textColor=Color.BLACK //overwrite
+        text="TEST2"
+      }
+    }
+  }
 }
 ```
 
@@ -82,11 +80,11 @@ Currently, styles not support parent style, but you can do same thing by calling
 
 ```kotlin
 val textStyle = ViewStyle<TextView>() {
-//...
+  //...
 }
 val buttonStyle = ViewStyle<Button>() {
-apply(textStyle)  //call other
-//...
+  apply(textStyle)  //call other
+  //...
 }
 ```
 
@@ -120,15 +118,15 @@ example
 ```kotlin
 //view creation method
 public fun Reakt.myView(style : ViewStyle<MyView>, block: () -> MyView) -> MyView {
-val view = MyView(this.context)
-commonProcess(view, style, block)  //must call this method
-return view
+  val view = MyView(this.context)
+  commonProcess(view, style, block)  //must call this method
+  return view
 }
 
 //create custom properies
 public var MyView.text : String
-get() = ""
-set(value) = myView.setText(text)
+  get() = ""
+  set(value) = myView.setText(text)
 
 ```
 
