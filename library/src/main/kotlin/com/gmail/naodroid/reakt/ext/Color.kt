@@ -13,7 +13,7 @@ import android.graphics.Color
  * @see Color.parseColor()
  * @return ARGB hex integer
  */
-public fun String.toColor() : Int {
+fun String.toColor() : Int {
     var text = this
     if (!text.startsWith("#")) {
         text = "#" + text
@@ -26,7 +26,7 @@ public fun String.toColor() : Int {
  * convert HEX RGB to ARGB.
  * ex: 0xFFFFF -> 0xFFFFFFFF
 */
-public fun convertRGB(color : Int) : Int {
+fun convertRGB(color : Int) : Int {
     if (color == 0) {
         //transparent
         return color

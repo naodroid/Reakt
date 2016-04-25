@@ -14,16 +14,16 @@ import com.gmail.naodroid.reakt.apply
 
 //----------------------------------------------------------------
 //view size
-public val fill : Int = android.view.ViewGroup.LayoutParams.MATCH_PARENT
-public val wrap : Int = android.view.ViewGroup.LayoutParams.WRAP_CONTENT
+val fill : Int = android.view.ViewGroup.LayoutParams.MATCH_PARENT
+val wrap : Int = android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 
-public fun Context.dip(value: Int): Int =
+fun Context.dip(value: Int): Int =
 		(value * (getResources()?.getDisplayMetrics()?.density ?: 0f)).toInt()
-public fun Context.dip(value: Float): Int =
+fun Context.dip(value: Float): Int =
 		(value * (getResources()?.getDisplayMetrics()?.density ?: 0f)).toInt()
 
-public fun View.dip(value: Int): Int = getContext().dip(value)
-public fun View.dip(value: Float): Int = getContext().dip(value)
+fun View.dip(value: Int): Int = getContext().dip(value)
+fun View.dip(value: Float): Int = getContext().dip(value)
 
 
 /**
@@ -37,12 +37,9 @@ public fun View.dip(value: Float): Int = getContext().dip(value)
  * }
  * 
  */
-fun Reakt.commonProcess<T : View>(view : T, style : ViewStyle<in T>?, block : T.() -> Unit) : Unit {
+fun <T : View> Reakt.commonProcess(view : T, style : ViewStyle<in T>?, block : T.() -> Unit) : Unit {
 	//add to parent
-	val parent = this.currentViewGroup()
-	if (parent != null) {
-		parent.addView(view)
-	}
+	this.currentViewGroup()?.addView(view)
 	//if viewgroup, then register to reakt as current ViewGroup
 	val isGroup = view is ViewGroup
 	if (isGroup) {
@@ -67,7 +64,7 @@ fun Reakt.commonProcess<T : View>(view : T, style : ViewStyle<in T>?, block : T.
  * inflate from layout resource
  * @param layoutResId layout resource id
  */
-public fun Reakt.inflate(layoutResId : Int) : View {
+fun Reakt.inflate(layoutResId : Int) : View {
 	val inflater = LayoutInflater.from(this.context)
 	val view = inflater.inflate(layoutResId, null);
 	commonProcess(view, null, {})
@@ -85,7 +82,7 @@ public fun Reakt.inflate(layoutResId : Int) : View {
  * @param block view customization
  * @return view, same as view parameter
  */
-public fun <T: View> Reakt.customView(view : T, style: ViewStyle<in T>?, block: T.() -> Unit) : T {
+fun <T: View> Reakt.customView(view : T, style: ViewStyle<in T>?, block: T.() -> Unit) : T {
     commonProcess(view, style, block)
 	return view
 }
@@ -98,7 +95,7 @@ public fun <T: View> Reakt.customView(view : T, style: ViewStyle<in T>?, block: 
  *    //write any code for inflated view
  * }
  */
-public fun <T : View> T.let(block: T.() -> Unit) : Unit {
+fun <T : View> T.let(block: T.() -> Unit) : Unit {
     this.block()
 }
 

@@ -2,16 +2,10 @@ package com.gmail.naodroid.reakt.ext
 
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.AttributeSet
 import android.util.TypedValue
-import android.view.Gravity
-import android.view.View
-import android.view.ViewGroup
-import android.widget.LinearLayout
 import android.widget.TextView
 import com.gmail.naodroid.reakt.Reakt
 import com.gmail.naodroid.reakt.ViewStyle
-import com.gmail.naodroid.reakt.ext
 
 /**
  * Created by nao on 15/05/20.
@@ -28,23 +22,23 @@ fun Reakt.textView(style : ViewStyle<in TextView>?, block : TextView.() -> Unit)
 	return textView
 }
 
-public var Reakt.TextViewStyle : ViewStyle<TextView>
+var Reakt.TextViewStyle : ViewStyle<TextView>
 	get() = throw UnsupportedOperationException()
-	set(value) = Reakt.registerDefaultStyle(javaClass<TextView>(), value)
+	set(value) = Reakt.registerDefaultStyle(TextView::class.java, value)
 
 
 //----------------------------------------------------------------
 //properties
 //text(String)
-public var TextView.text : String
+var TextView.text : String
 	get() = getText().toString()
 	set(value) = setText(value)
-public var TextView.textBind : () -> String
+var TextView.textBind : () -> String
 	get() = throw UnsupportedOperationException()
 	set(value) = Reakt.addBinding { setText(value()) }
 
 //Text(resource Id)
-public var TextView.textId : Int
+var TextView.textId : Int
 	get() = throw UnsupportedOperationException()
 	set(value) = setText(textId)
 public var TextView.textIdBind : () -> Int
@@ -52,41 +46,41 @@ public var TextView.textIdBind : () -> Int
 	set(value) = Reakt.addBinding { setText(value()) }
 
 //TextColor
-public var TextView.textColor : Int
+var TextView.textColor : Int
 	get() = throw UnsupportedOperationException()
 	set(value) = setTextColor(convertRGB(value))
-public var TextView.textColorBind : () -> Int
+var TextView.textColorBind : () -> Int
 	get() = throw UnsupportedOperationException()
 	set(value) = Reakt.addBinding { setTextColor(value()) }
 
 //TextSize
-public var TextView.textSize : Float
+var TextView.textSize : Float
 	get() = getTextSize()
 	set(value) = setTextSize(value)
-public var TextView.textSizeBind : () -> Float
+var TextView.textSizeBind : () -> Float
 	get() = throw UnsupportedOperationException()
 	set(value) = Reakt.addBinding { setTextSize(value()) }
 
-public var TextView.textSizeDip : Float
+var TextView.textSizeDip : Float
 	get() = getTextSize()
 	set(value) = setTextSize(TypedValue.COMPLEX_UNIT_DIP, value)
-public var TextView.textSizeDipBind : () -> Float
+var TextView.textSizeDipBind : () -> Float
 	get() = throw UnsupportedOperationException()
 	set(value) = Reakt.addBinding { setTextSize(TypedValue.COMPLEX_UNIT_DIP, value()) }
 //Gravity
-public var TextView.gravity : Int
+var TextView.gravity : Int
 	get() = this.getGravity()
 	set(value) = this.setGravity(value)
-public var TextView.gravityBind : () -> Int
+var TextView.gravityBind : () -> Int
 	get() = throw UnsupportedOperationException()
 	set(value) = Reakt.addBinding { setGravity(value()) }
 
 
 //----------------------------------------------------------------
 //Event
-public var TextView.onTextChanged : (String) -> Unit
+var TextView.onTextChanged : (String) -> Unit
 	get() = throw UnsupportedOperationException()
-	set(value) = addTextChangedListener(ext.TextWatcherImpl(value))
+	set(value) = addTextChangedListener(TextWatcherImpl(value))
 
 //
 private class TextWatcherImpl(val onTextChanged : (String) -> Unit) : TextWatcher {

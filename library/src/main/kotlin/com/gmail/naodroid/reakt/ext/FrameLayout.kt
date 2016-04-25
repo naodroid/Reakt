@@ -1,6 +1,5 @@
 package com.gmail.naodroid.reakt.ext
 
-import android.view.View
 import android.widget.FrameLayout
 import com.gmail.naodroid.reakt.Reakt
 import com.gmail.naodroid.reakt.ViewStyle
@@ -20,6 +19,6 @@ fun Reakt.frameLayout(style : ViewStyle<in FrameLayout>?, block : FrameLayout.()
 
 //----------------------------------------------------------------
 //properties
-public var FrameLayout.gravity : Int
+var FrameLayout.gravity : Int
 	get() = getForegroundGravity()
 	set(value) = setForegroundGravity(value)

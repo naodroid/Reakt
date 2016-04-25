@@ -90,8 +90,8 @@ public class TimerView : FrameLayout {
     fun getRemainTime() : Int {
         if (mTimerRunning) {
             val time = System.currentTimeMillis();
-            val diff = ((time - mTimerStartTime) / 100).toLong()
-            return (diff / mTimerDuration).toInt()
+            val diff = ((time - mTimerStartTime) / 1000).toLong()
+            return (diff * 100 / mTimerDuration).toInt()
         }
         return 0
     }
@@ -130,6 +130,7 @@ public class TimerView : FrameLayout {
         if (mTimerRunning || mLastSecond == 0) {
             return
         }
+        mTimerDuration = mLastSecond
         startTimer()
     }
     fun onCancelClick() {

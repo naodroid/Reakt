@@ -20,26 +20,26 @@ fun Reakt.progressBar(style : ViewStyle<in ProgressBar>?, block : ProgressBar.()
     return progressBar
 }
 
-public var Reakt.ProgressBarStyle : ViewStyle<ProgressBar>
+var Reakt.ProgressBarStyle : ViewStyle<ProgressBar>
     get() = throw UnsupportedOperationException()
-    set(value) = Reakt.registerDefaultStyle(javaClass<ProgressBar>(), value)
+    set(value) = Reakt.registerDefaultStyle(ProgressBar::class.java, value)
 
 
 //-----------------------------------------------------------------
 //progress
-public var ProgressBar.progress : Int
+var ProgressBar.progress : Int
     get() = this.getProgress()
     set(value) = this.setProgress(value)
-public var ProgressBar.progressBind : () -> Int
+var ProgressBar.progressBind : () -> Int
     get() = throw UnsupportedOperationException()
     set(value) {
         Reakt.addBinding { setProgress(value()) }
     }
 //secondary
-public var ProgressBar.secondaryProgress : Int
+var ProgressBar.secondaryProgress : Int
     get() = this.getSecondaryProgress()
     set(value) = this.setSecondaryProgress(value)
-public var ProgressBar.secondaryProgressBind : () -> Int
+var ProgressBar.secondaryProgressBind : () -> Int
     get() = throw UnsupportedOperationException()
     set(value) {
         Reakt.addBinding { setSecondaryProgress(value()) }
@@ -47,7 +47,7 @@ public var ProgressBar.secondaryProgressBind : () -> Int
 
 
 //max
-public var ProgressBar.max : Int
+var ProgressBar.max : Int
     get() = this.getMax()
     set(value) = this.setMax(max)
 

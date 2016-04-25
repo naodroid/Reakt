@@ -24,49 +24,47 @@ fun Reakt.view(style : ViewStyle<in View>?, block : View.() -> Unit) : View {
 	return view
 }
 
-public var Reakt.ViewStyle : ViewStyle<View>
+var Reakt.ViewStyle : ViewStyle<View>
 	get() = throw UnsupportedOperationException()
-	set(value) = Reakt.registerDefaultStyle(javaClass<View>(), value)
+	set(value) = Reakt.registerDefaultStyle(View::class.java, value)
 
 //----------------------------------------------------------------
-public data class Padding4(val left: Int, val top: Int, val right: Int, val bottom: Int)
-public data class Padding2(val topOrLeft: Int, val bottomOrRight: Int)
+data class Padding4(val left: Int, val top: Int, val right: Int, val bottom: Int)
+data class Padding2(val topOrLeft: Int, val bottomOrRight: Int)
 
 //padding
-public var View.padding : Int
+var View.padding : Int
 	get() = throw UnsupportedOperationException()
 	set(value) = this.setPadding(value, value, value, value)
-public var View.padding4 : Padding4
+var View.padding4 : Padding4
 	get() = Padding4(this.paddingLeft, this.paddingTop, this.paddingRight, this.paddingBottom)
 	set(value) {
 		this.setPadding(value.left, value.top, value.right, value.bottom)
 	}
-public var View.paddingVertical : Padding2
+var View.paddingVertical : Padding2
 	get() = Padding2(this.paddingTop, this.paddingBottom)
 	set(value) {
-		this.paddingTop = value.topOrLeft
-		this.paddingBottom = value.bottomOrRight
+		this.setPadding(this.paddingLeft, value.topOrLeft, this.paddingRight, value.bottomOrRight)
 	}
 
-public var View.paddingHorizontal : Padding2
+var View.paddingHorizontal : Padding2
 	get() = Padding2(this.paddingLeft, this.paddingRight)
 	set(value) {
-		this.paddingLeft = value.topOrLeft
-		this.paddingRight = value.bottomOrRight
+		this.setPadding(value.topOrLeft, this.paddingTop, value.bottomOrRight, this.paddingBottom)
 	}
 
-public var View.paddingLeft : Int
-	get() = this.getPaddingLeft()
-	set(value) = this.setPadding(value, this.getPaddingTop(), this.getPaddingRight(), this.getPaddingBottom())
-public var View.paddingTop : Int
-	get() = this.getPaddingTop()
-	set(value) = this.setPadding(this.paddingLeft, value, this.getPaddingRight(), this.getPaddingBottom())
-public var View.paddingRight : Int
-	get() = this.getPaddingRight()
-	set(value) = this.setPadding(this.paddingLeft, this.getPaddingTop(), value, this.getPaddingBottom())
-public var View.paddingBottom : Int
-	get() = this.getPaddingBottom()
-	set(value) = this.setPadding(this.paddingLeft, this.getPaddingTop(), this.getPaddingRight(), value)
+fun View.setPaddingLeft(padding : Int) {
+	this.setPadding(padding, this.paddingTop, this.paddingRight, this.paddingBottom);
+}
+fun View.setPaddingTop(padding : Int) {
+	this.setPadding(this.paddingLeft, padding, this.paddingRight, this.paddingBottom);
+}
+fun View.setPaddingRight(padding : Int) {
+	this.setPadding(this.paddingLeft, this.paddingTop, padding, this.paddingBottom);
+}
+fun View.setPaddingBottom(padding : Int) {
+	this.setPadding(this.paddingLeft, this.paddingTop, this.paddingRight, padding);
+}
 
 
 
@@ -75,42 +73,42 @@ public var View.paddingBottom : Int
 //Properties
 
 //background
-public var View.background : Drawable
+var View.background : Drawable
 	get() = this.getBackground()
 	set(value) = this.setBackground(value)
-public var View.backgroundBind : () -> Drawable
+var View.backgroundBind : () -> Drawable
 	get() = throw UnsupportedOperationException()
 	set(value) = Reakt.addBinding { setBackground(value()) }
 
 //backgroundColor
-public var View.backgroundColor : Int
+var View.backgroundColor : Int
 	get() = throw UnsupportedOperationException()
 	set(value) = setBackgroundColor(convertRGB(value))
-public var View.backgroundColorBind : () -> Int
+var View.backgroundColorBind : () -> Int
 	get() = throw UnsupportedOperationException()
 	set(value) = Reakt.addBinding { setBackgroundColor(convertRGB(value())) }
 
 //background Resource
-public var View.backgroundResource : Int
+var View.backgroundResource : Int
 	get() = throw UnsupportedOperationException()
 	set(value) = this.setBackgroundResource(value)
-public var View.backgroundResourceBind : () -> Int
+var View.backgroundResourceBind : () -> Int
 	get() = throw UnsupportedOperationException()
 	set(value) = Reakt.addBinding { setBackgroundResource(value()) }
 
 //visibility
-public var View.visibility : Int
+var View.visibility : Int
 	get() = getVisibility()
 	set(value) = setVisibility(value)
-public var View.visibilityBind : () -> Int
+var View.visibilityBind : () -> Int
 	get() = throw UnsupportedOperationException()
 	set(value) = Reakt.addBinding { setVisibility(value()) }
 
 //alpha
-public var View.alpha : Float
+var View.alpha : Float
 	get() = getAlpha()
 	set(value) = setAlpha(value)
-public var View.alphaBind : () -> Float
+var View.alphaBind : () -> Float
 	get() = throw UnsupportedOperationException()
 	set(value) = Reakt.addBinding { setAlpha(value()) }
 
@@ -119,7 +117,7 @@ public var View.alphaBind : () -> Float
 
 //----------------------------------------------------------------
 //Event
-public var View.onClick : (View) -> Unit 
+var View.onClick : (View) -> Unit 
 	get() = throw UnsupportedOperationException()
 	set(value) = this.setOnClickListener(value)
 	
@@ -128,7 +126,7 @@ public var View.onClick : (View) -> Unit
 
 //----------------------------------------------------------------
 //layout
-public var View.layoutGravity : Int 
+var View.layoutGravity : Int 
 	get() = throw UnsupportedOperationException()
 	set(value) = setLayoutGravityInner(this, value)
 
@@ -144,7 +142,7 @@ private fun setLayoutGravityInner(view : View, gravity : Int) {
 	}
 }
 
-public var View.weight : Float
+var View.weight : Float
 	get() = throw UnsupportedOperationException()
 	set(value) = setLayoutWeightInner(this, value)
 

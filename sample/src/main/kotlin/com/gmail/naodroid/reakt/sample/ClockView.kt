@@ -1,21 +1,16 @@
 package com.gmail.naodroid.reakt.sample
 
-import android.app.Fragment
 import android.content.Context
-import android.graphics.Color
-import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.Gravity
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.FrameLayout
-import android.widget.TextView
-import com.gmail.naodroid.reakt
 import com.gmail.naodroid.reakt.Reakt
-import com.gmail.naodroid.reakt.ext.*
-import java.util.Calendar
+import com.gmail.naodroid.reakt.ext.gravity
+import com.gmail.naodroid.reakt.ext.textBind
+import com.gmail.naodroid.reakt.ext.textView
+import com.gmail.naodroid.reakt.ext.verticalLayout
+import java.util.*
 
 /**
  * Created by nao on 15/05/23.

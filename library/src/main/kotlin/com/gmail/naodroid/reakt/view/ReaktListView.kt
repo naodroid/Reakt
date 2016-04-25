@@ -107,15 +107,15 @@ public class ReaktListView<T> : ListView {
 //Reakt extension
 //----------------------------------------------------------------
 //creating
-fun Reakt.listView<T>(block : ReaktListView<T>.() -> Unit) : ReaktListView<T> {
+fun <T> Reakt.listView(block : ReaktListView<T>.() -> Unit) : ReaktListView<T> {
     return listView(null, block)
 }
-fun Reakt.listView<T>(style : ViewStyle<in ReaktListView<T>>?, block : ReaktListView<T>.() -> Unit) : ReaktListView<T> {
+fun <T> Reakt.listView(style : ViewStyle<in ReaktListView<T>>?, block : ReaktListView<T>.() -> Unit) : ReaktListView<T> {
     val listView = ReaktListView<T>(this.context)
     commonProcess(listView, style, block)
     return listView
 }
 
-public var Reakt.ReaktListViewStyle : ViewStyle<ReaktListView<*>>
+var Reakt.ReaktListViewStyle : ViewStyle<ReaktListView<*>>
     get() = throw UnsupportedOperationException()
-    set(value) = Reakt.registerDefaultStyle(javaClass<ReaktListView<*>>(), value)
+    set(value) = Reakt.registerDefaultStyle(ReaktListView::class.java, value)

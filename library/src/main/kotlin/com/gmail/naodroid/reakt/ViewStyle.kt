@@ -6,7 +6,7 @@ import android.view.View
  * Created by nao on 15/05/21.
  */
 
-public class ViewStyle<T : View>(val block : T.() -> Unit) {
+class ViewStyle<T : View>(val block : T.() -> Unit) {
 	
 	
 	public fun apply(view : T) {
@@ -14,7 +14,7 @@ public class ViewStyle<T : View>(val block : T.() -> Unit) {
 	}
 }
 
-public fun <T : View> T.apply(style : ViewStyle<in T>) {
+fun <T : View> T.apply(style : ViewStyle<in T>) {
 	val block = style.block
 	this.block()
 }

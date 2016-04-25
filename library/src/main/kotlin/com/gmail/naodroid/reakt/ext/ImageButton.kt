@@ -1,6 +1,5 @@
 package com.gmail.naodroid.reakt.ext
 
-import android.graphics.drawable.Drawable
 import android.widget.ImageButton
 import com.gmail.naodroid.reakt.Reakt
 import com.gmail.naodroid.reakt.ViewStyle
@@ -23,8 +22,8 @@ fun Reakt.imageButton(style : ViewStyle<in ImageButton>?, block : ImageButton.()
 
 //-----------------------------------------
 //Default style
-public var Reakt.ImageButtonStyle : ViewStyle<ImageButton>
+var Reakt.ImageButtonStyle : ViewStyle<ImageButton>
     get() = throw UnsupportedOperationException()
-    set(value) = Reakt.registerDefaultStyle(javaClass<ImageButton>(), value)
+    set(value) = Reakt.registerDefaultStyle(ImageButton::class.java, value)
 
 

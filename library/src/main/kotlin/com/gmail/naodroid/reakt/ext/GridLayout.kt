@@ -23,27 +23,27 @@ fun Reakt.gridLayout(style : ViewStyle<in GridLayout>?, block : GridLayout.() ->
 
 //----------------------------------------------------------------
 //properties
-public var GridLayout.rowCount : Int
+var GridLayout.rowCount : Int
 	get() = getRowCount()
 	set(value) = setRowCount(value)
 
-public var GridLayout.columnCount : Int
+var GridLayout.columnCount : Int
 	get() = getColumnCount()
 	set(value) = setColumnCount(value)
 
 //----------------------------------------------------
 //View extension for grid layout
 
-public class GridSpec(val span : Int, val weight : Float)
+class GridSpec(val span : Int, val weight : Float)
 
 
-public var View.columnSpec : GridSpec
+var View.columnSpec : GridSpec
 	get() = throw UnsupportedOperationException()
 	set(value) = updateGridLayoutParams(this, null, value)
-public var View.rowSpec : GridSpec
+var View.rowSpec : GridSpec
 	get() = throw UnsupportedOperationException()
 	set(value) = updateGridLayoutParams(this, value, null)
-public var GridLayout.orientation : Int
+var GridLayout.orientation : Int
 	get() = getOrientation()
 	set(value) = setOrientation(value)
 

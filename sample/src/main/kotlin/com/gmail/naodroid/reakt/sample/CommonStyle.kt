@@ -6,7 +6,8 @@ import android.view.View
 import android.widget.TextView
 import com.gmail.naodroid.reakt.ViewStyle
 import com.gmail.naodroid.reakt.apply
-import com.gmail.naodroid.reakt.ext.*
+import com.gmail.naodroid.reakt.ext.backgroundColor
+import com.gmail.naodroid.reakt.ext.textColor
 
 /**
  * Created by nao on 15/05/23.
@@ -27,7 +28,7 @@ object CommonStyle {
 
     fun convertNumber(value : Int, digits : Int) : String {
         var text = "" + value
-        while (text.length() < digits) {
+        while (text.length < digits) {
             text = "0" + text
         }
         return text

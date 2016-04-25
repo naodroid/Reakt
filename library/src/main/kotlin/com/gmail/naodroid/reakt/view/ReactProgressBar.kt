@@ -17,24 +17,29 @@ import com.gmail.naodroid.reakt.ext.commonProcess
  * Easy to use change color, you don't need to create drawable xml.
  * (Foreground and background color can be changed.
  */
-public class SimpleProgressBar : ProgressBar {
+class SimpleProgressBar : ProgressBar {
 
-    public var progressBackgroundColor : Int = Color.GRAY
-        get() = $progressBackgroundColor
+    private var _progressBackgroundColor : Int = Color.GRAY
+    var progressBackgroundColor : Int
+        get() = this._progressBackgroundColor
         set(value) {
-            $progressBackgroundColor = value
+            this._progressBackgroundColor = value
             this@SimpleProgressBar.updateLayerDrawable()
         }
-    public var progressColor : Int = Color.BLUE
-        get() = $progressColor
+    
+    private var _progressColor : Int = Color.BLUE
+    var progressColor : Int
+        get() = this._progressColor
         set(value) {
-            $progressColor = value
+            this._progressColor = value
             this@SimpleProgressBar.updateLayerDrawable()
         }
-    public var progressOrientation : Int = Gravity.LEFT
-        get() = $progressOrientation
+    
+    private var _progressOrientation : Int = Gravity.LEFT
+    var progressOrientation : Int
+        get() = this._progressOrientation
         set(value) {
-            $progressOrientation = value
+            this._progressOrientation = value
             this@SimpleProgressBar.updateLayerDrawable()
         }
 

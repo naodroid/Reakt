@@ -1,7 +1,5 @@
 package com.gmail.naodroid.reakt.ext
 
-import android.view.View
-import android.widget.FrameLayout
 import android.widget.LinearLayout
 import com.gmail.naodroid.reakt.Reakt
 import com.gmail.naodroid.reakt.ViewStyle
@@ -37,6 +35,6 @@ fun Reakt.horizontalLayout(style : ViewStyle<in LinearLayout>?, block : LinearLa
 
 //----------------------------------------------------------------
 //properties
-public var LinearLayout.gravity : Int
+var LinearLayout.gravity : Int
 	get() = throw UnsupportedOperationException()
 	set(value) = setGravity(value)

@@ -3,11 +3,7 @@ package com.gmail.naodroid.reakt.sample
 import android.app.Activity
 import android.graphics.Color
 import android.os.Bundle
-import android.os.PersistableBundle
-import android.view.View
-import android.widget.Button
 import android.widget.ImageView
-import com.gmail.naodroid.reakt
 import com.gmail.naodroid.reakt.Reakt
 import com.gmail.naodroid.reakt.ViewStyle
 import com.gmail.naodroid.reakt.ext.*
@@ -24,12 +20,14 @@ public class ClockActivity : Activity() {
         Timer(R.drawable.tab_icon_timer)
     }
 
-    private var mCurrentTab = Tab.Clock
-        get() = $mCurrentTab
+    private var _mCurrentTab = Tab.Clock
+    private var mCurrentTab : Tab
+        get() = this._mCurrentTab
         set(value)  {
-            $mCurrentTab = value
+            this._mCurrentTab = value
             onTabChanged(value)
         }
+    
     private var mReakt : Reakt? = null
 
     //--------------------------------------------------------------
